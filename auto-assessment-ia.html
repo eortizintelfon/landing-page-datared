@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Assessment de Madurez en IA y Automatización</title>
+    <!-- Incluye el CDN de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #1d4ed8, #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen py-10 px-4">
+
+    <div id="assessment-container" class="bg-white shadow-2xl rounded-2xl w-full max-w-3xl p-8 transform transition-all duration-500 ease-in-out">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+                <span class="text-gradient">Auto-Assessment</span>
+                <br>
+                <span class="text-2xl md:text-3xl text-gray-600 font-semibold">de Madurez en IA y Automatización</span>
+            </h1>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto">Este cuestionario te ayudará a evaluar el nivel de adaptación de la inteligencia artificial y la automatización en la operación diaria de tu empresa.</p>
+        </header>
+
+        <!-- Sección de Información Personal -->
+        <section id="contact-section" class="space-y-6">
+            <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Datos de Contacto</h2>
+            <p class="text-gray-600 mb-6">Por favor, ingresa tus datos para comenzar la evaluación.</p>
+            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="empresa" class="block text-sm font-medium text-gray-700">Empresa</label>
+                    <input type="text" id="empresa" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <input type="text" id="nombre" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="cargo" class="block text-sm font-medium text-gray-700">Cargo</label>
+                    <input type="text" id="cargo" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="pais" class="block text-sm font-medium text-gray-700">País</label>
+                    <select id="pais" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <option value="">Selecciona tu país</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="Cuba">Cuba</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="El Salvador">El Salvador</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Honduras">Honduras</option>
+                        <option value="México">México</option>
+                        <option value="Nicaragua">Nicaragua</option>
+                        <option value="Panamá">Panamá</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Perú">Perú</option>
+                        <option value="Puerto Rico">Puerto Rico</option>
+                        <option value="República Dominicana">República Dominicana</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Venezuela">Venezuela</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono (con código de país)</label>
+                    <input type="tel" id="telefono" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <input type="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div class="md:col-span-2 text-right">
+                    <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">Comenzar Evaluación</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Sección del Cuestionario -->
+        <section id="survey-section" class="space-y-8 hidden">
+            <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Cuestionario</h2>
+            <div id="progress-container" class="mb-6">
+                <div class="bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300 ease-out" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <form id="survey-form" class="space-y-6">
+                <!-- Secciones de preguntas -->
+                <div id="section-1" class="space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-700">Sección 1: Cultura y Liderazgo Estratégico</h3>
+                    <p class="text-sm text-gray-500">Esta sección evalúa el compromiso de la alta dirección y la disposición de la cultura organizacional para la adopción tecnológica.</p>
+                </div>
+                <div id="section-2" class="space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-700">Sección 2: Integración de Procesos y Operaciones</h3>
+                    <p class="text-sm text-gray-500">Esta sección mide la profundidad con la que la IA y la automatización se han incorporado en el trabajo diario.</p>
+                </div>
+                <div id="section-3" class="space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-700">Sección 3: Gobernanza y Gestión del Cambio</h3>
+                    <p class="text-sm text-gray-500">Esta sección evalúa la infraestructura, las políticas y los controles que respaldan la adopción de la tecnología.</p>
+                </div>
+
+                <div class="text-right mt-8">
+                    <button type="submit" id="submit-survey" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">Finalizar Evaluación</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Sección de Resultados -->
+        <section id="results-section" class="space-y-6 hidden">
+            <div id="loading-spinner" class="flex flex-col items-center justify-center p-12 hidden">
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+                <p class="mt-4 text-gray-600">Calculando tus resultados...</p>
+            </div>
+            <div id="report-content" class="text-center space-y-4 hidden">
+                <h2 class="text-2xl font-bold text-gradient">¡Evaluación Completada!</h2>
+                
+                <div class="mt-8 text-left space-y-6">
+                    <h4 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Datos de la Empresa</h4>
+                    <ul id="personal-data" class="space-y-2 text-gray-700"></ul>
+
+                    <p class="text-lg text-gray-700">Tu nivel de madurez en IA y Automatización es:</p>
+                    <div class="flex flex-col items-center justify-center">
+                        <h3 id="result-level" class="text-4xl md:text-5xl font-extrabold text-blue-800"></h3>
+                        <p id="result-description" class="text-xl text-gray-600 font-medium"></p>
+                    </div>
+
+                    <h4 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Análisis y Diagnóstico</h4>
+                    <p id="result-diagnosis" class="text-gray-700 leading-relaxed"></p>
+
+                    <h4 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Recomendaciones</h4>
+                    <ul id="result-recommendations" class="list-disc list-inside text-gray-700 space-y-2 leading-relaxed"></ul>
+                </div>
+                <p id="email-status" class="mt-6 text-sm font-semibold text-gray-600"></p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const contactSection = document.getElementById('contact-section');
+        const surveySection = document.getElementById('survey-section');
+        const resultsSection = document.getElementById('results-section');
+        const contactForm = document.getElementById('contact-form');
+        const surveyForm = document.getElementById('survey-form');
+        const progressBar = document.getElementById('progress-bar');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const reportContent = document.getElementById('report-content');
+        const emailStatus = document.getElementById('email-status');
+
+        let contactData = {};
+        const webhookUrl = 'https://hook.eu2.make.com/lefuww29l83ah9ag9t5en3hq71k09y3j';
+
+        // Mapeo de preguntas, opciones y puntajes
+        const questionsData = [
+            {
+                text: "Visión de Liderazgo: Los líderes de la empresa tienen una visión clara y definida de cómo la IA y la automatización pueden generar valor a largo plazo.",
+                section: "section-1",
+                options: [
+                    { label: "No se discute.", value: 1 },
+                    { label: "Se menciona.", value: 2 },
+                    { label: "Es un tema recurrente.", value: 3 },
+                    { label: "Existe una estrategia inicial.", value: 4 },
+                    { label: "Es parte de la estrategia principal de la compañía.", value: 5 }
+                ]
+            },
+            {
+                text: "Cultura de Innovación: Se fomenta activamente una mentalidad de experimentación y aprendizaje continuo entre los colaboradores.",
+                section: "section-1",
+                options: [
+                    { label: "No hay interés en experimentar.", value: 1 },
+                    { label: "Ocasionalmente se permite experimentar.", value: 2 },
+                    { label: "Se fomenta la experimentación en equipos específicos.", value: 3 },
+                    { label: "La innovación es un valor.", value: 4 },
+                    { label: "Se premia la iniciativa.", value: 5 }
+                ]
+            },
+            {
+                text: "Capacitación del Talento: La empresa invierte activamente en capacitar a su personal en el uso de herramientas de IA y automatización.",
+                section: "section-1",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "Se ofrecen capacitaciones esporádicas.", value: 2 },
+                    { label: "Se ofrece capacitación básica.", value: 3 },
+                    { label: "Existen programas de formación recurrentes.", value: 4 },
+                    { label: "La formación es obligatoria y se mide su aplicación.", value: 5 }
+                ]
+            },
+            {
+                text: "Colaboración Interdepartamental: Los equipos de diferentes áreas colaboran de forma habitual para identificar oportunidades de automatización.",
+                section: "section-1",
+                options: [
+                    { label: "No hay colaboración.", value: 1 },
+                    { label: "La colaboración es forzada.", value: 2 },
+                    { label: "Ocurre en proyectos específicos.", value: 3 },
+                    { label: "Hay canales de comunicación para compartir ideas.", value: 4 },
+                    { label: "Los equipos están alineados.", value: 5 }
+                ]
+            },
+            {
+                text: "Identificación de Procesos Repetitivos: Se tiene un inventario de tareas manuales y repetitivas que son candidatas a la automatización.",
+                section: "section-2",
+                options: [
+                    { label: "No se identifican.", value: 1 },
+                    { label: "Se identifican tareas de forma informal.", value: 2 },
+                    { label: "Se tienen procesos mapeados.", value: 3 },
+                    { label: "Se tienen criterios de selección para automatizar.", value: 4 },
+                    { label: "Se auditan constantemente los procesos.", value: 5 }
+                ]
+            },
+            {
+                text: "Uso de Herramientas de IA Generativa: Los colaboradores utilizan herramientas de IA generativa (e.j., ChatGPT, Gemini) para tareas cotidianas.",
+                section: "section-2",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "Menos del 25%.", value: 2 },
+                    { label: "25-50%.", value: 3 },
+                    { label: "50-75%.", value: 4 },
+                    { label: "Más del 75%.", value: 5 }
+                ]
+            },
+            {
+                text: "Automatización de Flujos (No-Code): Se han implementado flujos de trabajo sin código (e.j., con Make) para automatizar procesos clave.",
+                section: "section-2",
+                options: [
+                    { label: "No se ha automatizado.", value: 1 },
+                    { label: "Se ha automatizado 1 flujo.", value: 2 },
+                    { label: "De 2 a 5 flujos.", value: 3 },
+                    { label: "De 5 a 10 flujos.", value: 4 },
+                    { label: "Más de 10 flujos.", value: 5 }
+                ]
+            },
+            {
+                text: "Uso en Marketing y Ventas: Se utiliza IA para generar contenido, analizar datos de clientes o automatizar comunicaciones.",
+                section: "section-2",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "En una tarea.", value: 2 },
+                    { label: "En dos tareas.", value: 3 },
+                    { label: "En tres tareas.", value: 4 },
+                    { label: "En más de tres tareas.", value: 5 }
+                ]
+            },
+            {
+                text: "Uso en Servicio al Cliente: Se emplean chatbots, asistentes virtuales o herramientas de IA para gestionar consultas y mejorar la experiencia.",
+                section: "section-2",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "Se ha pensado.", value: 2 },
+                    { label: "Se está probando.", value: 3 },
+                    { label: "Se usa en un canal.", value: 4 },
+                    { label: "Se usa en múltiples canales.", value: 5 }
+                ]
+            },
+            {
+                text: "Uso en Recursos Humanos: Se utilizan herramientas de IA para optimizar procesos de reclutamiento, onboarding o gestión del talento.",
+                section: "section-2",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "Se ha pensado.", value: 2 },
+                    { label: "Se está probando.", value: 3 },
+                    { label: "Se usa para una tarea.", value: 4 },
+                    { label: "Se usa para varias tareas.", value: 5 }
+                ]
+            },
+            {
+                text: "Uso en Finanzas y Contabilidad: Se aplican soluciones de IA o automatización para la conciliación de datos, reportes o gestión de pagos.",
+                section: "section-2",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "Se ha pensado.", value: 2 },
+                    { label: "Se está probando.", value: 3 },
+                    { label: "Se usa para una tarea.", value: 4 },
+                    { label: "Se usa para varias tareas.", value: 5 }
+                ]
+            },
+            {
+                text: "Uso en Operaciones: Se emplean herramientas de IA para la gestión de la cadena de suministro, control de calidad o logística.",
+                section: "section-2",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "Se ha pensado.", value: 2 },
+                    { label: "Se está probando.", value: 3 },
+                    { label: "Se usa para una tarea.", value: 4 },
+                    { label: "Se usa para varias tareas.", value: 5 }
+                ]
+            },
+            {
+                text: "Definición de Políticas: Existen políticas claras sobre el uso ético y responsable de la IA y la automatización.",
+                section: "section-3",
+                options: [
+                    { label: "No existen.", value: 1 },
+                    { label: "Se discute su necesidad.", value: 2 },
+                    { label: "Se están definiendo.", value: 3 },
+                    { label: "Están en borrador.", value: 4 },
+                    { label: "Son claras y comunicadas.", value: 5 }
+                ]
+            },
+            {
+                text: "Asignación de Roles: Hay personas o equipos definidos que lideran y gestionan la implementación de iniciativas de IA y automatización.",
+                section: "section-3",
+                options: [
+                    { label: "No existen.", value: 1 },
+                    { label: "Es responsabilidad de todos.", value: 2 },
+                    { label: "Son equipos temporales.", value: 3 },
+                    { label: "Hay un líder.", value: 4 },
+                    { label: "Hay un equipo formal.", value: 5 }
+                ]
+            },
+            {
+                text: "Medición de Impacto: Se miden indicadores clave de rendimiento (KPIs) para evaluar el impacto de la IA en la productividad y eficiencia.",
+                section: "section-3",
+                options: [
+                    { label: "No se mide.", value: 1 },
+                    { label: "Se mide de forma informal.", value: 2 },
+                    { label: "Se están definiendo los KPIs.", value: 3 },
+                    { label: "Se miden algunos KPIs.", value: 4 },
+                    { label: "Se mide de forma regular.", value: 5 }
+                ]
+            },
+            {
+                text: "Inversión Tecnológica: La empresa tiene un presupuesto asignado para la adquisición de software y formación en IA y automatización.",
+                section: "section-3",
+                options: [
+                    { label: "Nulo.", value: 1 },
+                    { label: "Esporádico.", value: 2 },
+                    { label: "Pequeño presupuesto.", value: 3 },
+                    { label: "Presupuesto definido.", value: 4 },
+                    { label: "Es una partida estratégica del presupuesto.", value: 5 }
+                ]
+            }
+        ];
+
+        // Función para renderizar las preguntas dinámicamente
+        function renderQuestions() {
+            questionsData.forEach((q, index) => {
+                const questionContainer = document.createElement('div');
+                questionContainer.className = 'bg-gray-50 p-4 rounded-lg shadow-sm';
+                questionContainer.innerHTML = `
+                    <h4 class="font-semibold text-gray-800 mb-3">${index + 1}. ${q.text}</h4>
+                    <div class="space-y-2">
+                        ${q.options.map(option => `
+                            <label class="flex items-center cursor-pointer p-2 rounded-md hover:bg-white transition duration-200">
+                                <input type="radio" name="question-${index}" value="${option.value}" class="text-blue-600 focus:ring-blue-500 mr-2">
+                                <span class="text-gray-700">${option.label}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                document.getElementById(q.section).appendChild(questionContainer);
+            });
+        }
+
+        // Manejador del formulario de contacto
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            contactData = {
+                empresa: document.getElementById('empresa').value,
+                nombre: document.getElementById('nombre').value,
+                cargo: document.getElementById('cargo').value,
+                pais: document.getElementById('pais').value,
+                telefono: document.getElementById('telefono').value,
+                email: document.getElementById('email').value
+            };
+            contactSection.classList.add('hidden');
+            surveySection.classList.remove('hidden');
+        });
+
+        // Manejador del formulario del cuestionario
+        surveyForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(surveyForm);
+            let totalScore = 0;
+            const answers = {};
+
+            let allAnswered = true;
+            for (let i = 0; i < questionsData.length; i++) {
+                const answer = formData.get(`question-${i}`);
+                if (!answer) {
+                    allAnswered = false;
+                    break;
+                }
+                answers[`question-${i}`] = parseInt(answer);
+                totalScore += parseInt(answer);
+            }
+
+            if (!allAnswered) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50';
+                messageDiv.innerHTML = `
+                    <div class="bg-white p-6 rounded-lg shadow-xl text-center">
+                        <p class="text-lg font-semibold text-gray-800">Por favor, responde todas las preguntas antes de finalizar.</p>
+                        <button onclick="this.parentElement.parentElement.remove()" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">Aceptar</button>
+                    </div>
+                `;
+                document.body.appendChild(messageDiv);
+                return;
+            }
+
+            surveySection.classList.add('hidden');
+            resultsSection.classList.remove('hidden');
+            loadingSpinner.classList.remove('hidden');
+
+            const { level, description, diagnosis, recommendations } = getReportContent(totalScore);
+            renderReport(contactData, totalScore, level, description, diagnosis, recommendations);
+
+            const autoAssessmentHTML = `
+                <h3>Análisis de Madurez en IA y Automatización</h3>
+                <p><strong>Nombre:</strong> ${contactData.nombre}<br><strong>Empresa:</strong> ${contactData.empresa}</p>
+                <p><strong>Nivel de Madurez:</strong> ${level} - ${description}</p>
+                <p><strong>Diagnóstico:</strong> ${diagnosis}</p>
+                <ul>
+                    ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                </ul>
+            `;
+            
+            const jsonPayload = {
+                empresa: contactData.empresa,
+                nombre: contactData.nombre,
+                cargo: contactData.cargo,
+                pais: contactData.pais,
+                telefono: contactData.telefono,
+                email: contactData.email,
+                score: totalScore,
+                level: level,
+                description: description,
+                diagnosis: diagnosis,
+                recommendations: recommendations,
+                answers: answers,
+                auto_assessment: autoAssessmentHTML
+            };
+            
+            await sendReportToWebhook(jsonPayload);
+        });
+
+        // Función para actualizar la barra de progreso
+        function updateProgress() {
+            const totalQuestions = questionsData.length;
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            const progress = (answeredQuestions / totalQuestions) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Escuchar los cambios en los radio buttons para actualizar el progreso
+        surveyForm.addEventListener('change', updateProgress);
+
+        // Generar el contenido del reporte
+        function getReportContent(score) {
+            if (score >= 16 && score <= 32) {
+                return {
+                    level: "Nivel 1",
+                    description: "Explorador Digital",
+                    diagnosis: "Tu empresa está en las etapas iniciales. El uso de la IA es nulo o muy limitado, y la cultura organizacional aún no ha adoptado un enfoque estratégico hacia la automatización. La adopción es más reactiva que proactiva.",
+                    recommendations: [
+                        "Paso 1: Visión y Concientización. Organiza talleres para la alta dirección y gerencia sobre el potencial de la IA y la automatización.",
+                        "Paso 2: Capacitación Básica. Inicia con programas de formación en herramientas de IA generativa (e.j., ChatGPT) para un grupo piloto de colaboradores, enfocándote en tareas sencillas.",
+                        "Paso 3: Identificación de un Proceso Clave. Elige un proceso simple y repetitivo para automatizar como prueba de concepto, como la lectura y respuesta de correos recurrentes."
+                    ]
+                };
+            } else if (score >= 33 && score <= 48) {
+                return {
+                    level: "Nivel 2",
+                    description: "Adoptador Ocasional",
+                    diagnosis: "Tu empresa ha dado los primeros pasos. Hay interés y quizás algunos equipos ya usan la IA, pero de manera aislada y sin una estrategia unificada. Falta un marco de gobernanza y un liderazgo formal para escalar.",
+                    recommendations: [
+                        "Paso 1: Mapeo de Procesos. Realiza un análisis exhaustivo para identificar y mapear los procesos de alto valor que podrían beneficiarse de la automatización en áreas como marketing o servicio al cliente.",
+                        "Paso 2: Formación y Empoderamiento. Fomenta la formación en herramientas de automatización sin código (e.j., Make) para que los propios colaboradores puedan crear sus flujos.",
+                        "Paso 3: Creación de un Comité de Innovación. Asigna un equipo o un líder responsable de pilotar y escalar las iniciativas."
+                    ]
+                };
+            } else if (score >= 49 && score <= 64) {
+                return {
+                    level: "Nivel 3",
+                    description: "Integrador Estratégico",
+                    diagnosis: "Tu empresa tiene un progreso significativo. La IA y la automatización son parte del trabajo diario de varios equipos y se están viendo resultados tangibles. El desafío es estandarizar los procesos y optimizar la gobernanza para maximizar el retorno de inversión.",
+                    recommendations: [
+                        "Paso 1: Estandarización de Herramientas. Define una o dos herramientas oficiales de IA y automatización para toda la compañía.",
+                        "Paso 2: Medición de Impacto. Implementa un sistema de métricas para medir la eficiencia y el ahorro de tiempo de los procesos automatizados.",
+                        "Paso 3: Gestión del Conocimiento. Crea un repositorio de automatizaciones que puedan ser replicadas por otros equipos, promoviendo el conocimiento interno."
+                    ]
+                };
+            } else { // 65-80
+                return {
+                    level: "Nivel 4",
+                    description: "Líder Innovador",
+                    diagnosis: "La IA y la automatización no son solo herramientas, sino que están profundamente integradas en la cultura y la operación de tu empresa. Se ha establecido una disciplina de innovación continua y se utilizan para transformar el negocio. El enfoque está en la optimización y la exploración de nuevas tecnologías emergentes.",
+                    recommendations: [
+                        "Paso 1: Optimización de la Gobernanza. Revisa y ajusta las políticas de uso para asegurar la máxima seguridad y eficiencia.",
+                        "Paso 2: Formación Avanzada. Ofrece capacitaciones avanzadas en modelos de lenguaje grandes y análisis de datos con IA.",
+                        "Paso 3: Exploración de Casos de Uso Avanzados. Investiga cómo la IA puede transformar la estrategia de negocio y no solo los procesos operativos."
+                    ]
+                };
+            }
+        }
+
+        // Renderizar el informe en la UI
+        function renderReport(data, score, level, description, diagnosis, recommendations) {
+            loadingSpinner.classList.add('hidden');
+            reportContent.classList.remove('hidden');
+
+            const personalDataList = document.getElementById('personal-data');
+            personalDataList.innerHTML = `
+                <li class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg><span><strong>Nombre:</strong> ${data.nombre}</span></li>
+                <li class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10.394 2.08a1 1 0 00-.788 0L3.085 5.586A1 1 0 003 6.414V14a1 1 0 001 1h2.586l1.248-1.248a1 1 0 00-.707-.707L6.5 13H5V7.414l5-3.5 5 3.5V13h-1.5a1 1 0 00-.707.293L13.414 15H17a1 1 0 001-1V6.414A1 1 0 0017.915 5.586L10.394 2.08zM15 17h1a1 1 0 001-1v-2.586l-2.5-2.5L14.586 11H15V17zM11.707 15.707l1.586-1.586A1 1 0 0014 14.414V17h-2.293L11.707 15.707z" /></svg><span><strong>Empresa:</strong> ${data.empresa}</span></li>
+                <li class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1h4V3a1 1 0 00-1-1H6zm4 0h4a1 1 0 011 1v1h-4V3a1 1 0 01-1-1zm-4 4V5h10v1a2 2 0 01-2 2H8a2 2 0 01-2-2z" clip-rule="evenodd" /></svg><span><strong>Cargo:</strong> ${data.cargo}</span></li>
+                <li class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 11.116l7.997-5.232A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 5.257-8-5.257V15a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg><span><strong>Correo Electrónico:</strong> ${data.email}</span></li>
+                <li class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg><span><strong>País:</strong> ${data.pais}</span></li>
+                <li class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H3a1 1 0 01-1-1V3zm2 2v10h12V5H4zm2 2h8v2H6V7zm0 4h8v2H6v-2z" /></svg><span><strong>Teléfono:</strong> ${data.telefono}</span></li>
+            `;
+
+            document.getElementById('result-level').textContent = level;
+            document.getElementById('result-description').textContent = description;
+            document.getElementById('result-diagnosis').textContent = diagnosis;
+
+            const recommendationsList = document.getElementById('result-recommendations');
+            recommendationsList.innerHTML = '';
+            recommendations.forEach(rec => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${rec.split(': ')[0]}:</strong> ${rec.split(': ')[1]}`;
+                recommendationsList.appendChild(li);
+            });
+            
+            loadingSpinner.classList.add('hidden');
+            reportContent.classList.remove('hidden');
+        }
+
+        // Enviar el reporte a Make
+        async function sendReportToWebhook(jsonPayload) {
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(jsonPayload)
+                });
+
+                if (response.ok) {
+                    emailStatus.textContent = 'El informe ha sido enviado con éxito a tu correo electrónico.';
+                    emailStatus.classList.add('text-green-600');
+                    console.log('Reporte enviado correctamente.');
+                } else {
+                    emailStatus.textContent = 'Hubo un error al enviar el informe. Puedes guardarlo desde tu navegador.';
+                    emailStatus.classList.add('text-red-600');
+                    console.error('Error al enviar el reporte:', response.statusText);
+                }
+            } catch (error) {
+                emailStatus.textContent = 'Hubo un error al enviar el informe. Puedes guardarlo desde tu navegador.';
+                emailStatus.classList.add('text-red-600');
+                console.error('Error en la conexión:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', renderQuestions);
+    </script>
+</body>
+</html>
