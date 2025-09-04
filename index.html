@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA RED - Tu Aliado en IA y Automatización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #1d4ed8, #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .bg-gradient-blue {
+            background-image: linear-gradient(to right, #2563eb, #3b82f6);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header / Navbar -->
+    <header class="w-full bg-white shadow-sm p-4 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gradient">DATA RED</a>
+            <a href="#contacto" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Contáctanos</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-16 md:py-24">
+        <div class="container mx-auto px-4 md:flex items-center space-y-8 md:space-y-0 md:space-x-12">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                    Potencia tu equipo con <br><span class="text-gradient">Inteligencia Artificial</span>
+                </h1>
+                <p class="mt-4 text-lg text-gray-600">
+                    Transformamos la forma de trabajar de tu equipo, haciéndolos más eficientes y estratégicos sin necesidad de conocimientos técnicos.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#servicios" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition transform hover:scale-105">
+                        Conoce nuestros servicios
+                    </a>
+                    <a href="https://<TU_USUARIO>.github.io/<TU_REPOSITORIO>/auto-assessment-ia.html" target="_blank" class="px-6 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-300 transition transform hover:scale-105">
+                        Haz tu autoevaluación
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end">
+                <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=Tu+Imagen+Aqui" alt="Equipo trabajando con IA" class="rounded-xl shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nuestros Servicios</h2>
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                Ofrecemos dos modalidades para que tu empresa se adapte a la revolución de la IA y la automatización.
+            </p>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Tarjeta de Talleres -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-gradient">Talleres Prácticos</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed">
+                        Talleres de inmersión para equipos, enfocados en el uso de herramientas de **IA generativa** y la creación de **automatizaciones de procesos** sin necesidad de programar.
+                    </p>
+                    <ul class="mt-6 text-left text-gray-700 space-y-2">
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" /></svg>Enfoque 100% práctico.</li>
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 11.116l7.997-5.232A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 5.257-8-5.257V15a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>Ideal para personal no técnico.</li>
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" /></svg>Resultados visibles desde el primer día.</li>
+                    </ul>
+                </div>
+                
+                <!-- Tarjeta de Consultoría -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-gradient">Consultoría de Acompañamiento</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed">
+                        Un programa de **coaching intensivo** para que tu equipo aprenda a identificar, planificar e implementar soluciones de IA y automatización en sus tareas cotidianas.
+                    </p>
+                    <ul class="mt-6 text-left text-gray-700 space-y-2">
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zm14 0a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zm14 0a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2z" /></svg>Enfoque en procesos específicos.</li>
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" /></svg>Acompañamiento personalizado.</li>
+                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" /></svg>Transferencia de conocimiento a largo plazo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="contacto" class="bg-gradient-blue text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold">¿Listo para transformar tu empresa?</h2>
+            <p class="mt-4 text-lg">
+                Agenda una llamada gratuita con nosotros para descubrir cómo podemos ayudarte a alcanzar tus objetivos.
+            </p>
+            <a href="mailto:tu-correo@ejemplo.com" class="mt-8 inline-block px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition transform hover:scale-105">
+                Contáctanos ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-6 text-center">
+        <p>&copy; 2024 DATA RED. Todos los derechos reservados.</p>
+        <p class="mt-2 text-sm">Hecho con el poder de la IA y la Automatización.</p>
+    </footer>
+
+</body>
+</html>
